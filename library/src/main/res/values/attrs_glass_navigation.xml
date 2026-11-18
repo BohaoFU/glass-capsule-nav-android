@@ -1,0 +1,12 @@
+<resources>
+    <declare-styleable name="GlassNavTab">
+        <attr name="glassNavLabel" format="string" />
+        <attr name="glassNavIcon">
+            <enum name="home" value="0" />
+            <enum name="message" value="1" />
+            <enum name="add" value="2" />
+            <enum name="notification" value="3" />
+            <enum name="profile" value="4" />
+        </attr>
+    </declare-styleable>
+</resources>

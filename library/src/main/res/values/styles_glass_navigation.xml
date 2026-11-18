@@ -1,0 +1,28 @@
+<resources>
+    <item name="glass_nav_tabs" type="id" />
+
+    <style name="Widget.GlassCapsuleNav.Bar" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:background">@drawable/bg_capsule_nav_container</item>
+        <item name="android:clipToOutline">true</item>
+        <item name="android:elevation">8dp</item>
+        <item name="android:padding">5dp</item>
+    </style>
+
+    <style name="Widget.GlassCapsuleNav.Row" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:clipChildren">false</item>
+        <item name="android:clipToPadding">false</item>
+    </style>
+
+    <style name="Widget.GlassCapsuleNav.Tab" parent="">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+</resources>

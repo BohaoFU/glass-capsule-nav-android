@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Glass Capsule</string>
+    <string name="home">Home</string>
+    <string name="messages">Messages</string>
+    <string name="add">Add</string>
+    <string name="notifications">Notifications</string>
+    <string name="profile">Profile</string>
+    <string name="add_color_panel">Add a color panel?</string>
+</resources>

@@ -1,0 +1,12 @@
+<resources>
+    <color name="glass_nav_ink">#262626</color>
+    <color name="glass_nav_selected_ink">#4A4A4A</color>
+    <color name="glass_nav_selected_fill">#D9525252</color>
+    <color name="glass_nav_tint">#66F7F7F7</color>
+    <color name="glass_nav_sheen">#60FFFFFF</color>
+    <color name="glass_nav_shadow">#42000000</color>
+    <color name="glass_nav_indicator_fill">#9CFAFAFA</color>
+    <color name="glass_nav_indicator_center">#3AEDEDED</color>
+    <color name="glass_nav_indicator_edge">#DBFFFFFF</color>
+    <color name="glass_nav_indicator_glint">#D1FFFFFF</color>
+</resources>

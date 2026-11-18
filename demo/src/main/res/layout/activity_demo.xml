@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/demo_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:colorBackground"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <ScrollView
+        android:id="@+id/backdrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?android:colorBackground"
+        android:clipToPadding="false"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/demo_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="22dp"
+            android:paddingTop="24dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="@string/app_name"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="38sp" />
+
+            <TextView
+                android:id="@+id/current_tab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:accessibilityLiveRegion="polite"
+                android:textColor="?android:textColorSecondary"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <io.github.bohaofu.glasscapsulenav.GlassNavBar
+        android:id="@+id/glass_bar"
+        style="@style/Widget.GlassCapsuleNav.Bar"
+        android:layout_gravity="bottom"
+        android:layout_marginHorizontal="13dp"
+        android:layout_marginBottom="24dp">
+
+        <LinearLayout
+            android:id="@id/glass_nav_tabs"
+            style="@style/Widget.GlassCapsuleNav.Row">
+
+            <io.github.bohaofu.glasscapsulenav.GlassNavTab
+                android:id="@+id/tab_home"
+                style="@style/Widget.GlassCapsuleNav.Tab"
+                app:glassNavIcon="home"
+                app:glassNavLabel="@string/home" />
+
+            <io.github.bohaofu.glasscapsulenav.GlassNavTab
+                android:id="@+id/tab_messages"
+                style="@style/Widget.GlassCapsuleNav.Tab"
+                app:glassNavIcon="message"
+                app:glassNavLabel="@string/messages" />
+
+            <io.github.bohaofu.glasscapsulenav.GlassNavTab
+                android:id="@+id/tab_add"
+                style="@style/Widget.GlassCapsuleNav.Tab"
+                app:glassNavIcon="add"
+                app:glassNavLabel="@string/add" />
+
+            <io.github.bohaofu.glasscapsulenav.GlassNavTab
+                android:id="@+id/tab_notifications"
+                style="@style/Widget.GlassCapsuleNav.Tab"
+                app:glassNavIcon="notification"
+                app:glassNavLabel="@string/notifications" />
+
+            <io.github.bohaofu.glasscapsulenav.GlassNavTab
+                android:id="@+id/tab_profile"
+                style="@style/Widget.GlassCapsuleNav.Tab"
+                app:glassNavIcon="profile"
+                app:glassNavLabel="@string/profile" />
+        </LinearLayout>
+    </io.github.bohaofu.glasscapsulenav.GlassNavBar>
+</FrameLayout>
