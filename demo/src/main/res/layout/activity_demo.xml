@@ -32,14 +32,38 @@
                 android:textColor="?android:textColorPrimary"
                 android:textSize="38sp" />
 
-            <TextView
-                android:id="@+id/current_tab"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:accessibilityLiveRegion="polite"
-                android:textColor="?android:textColorSecondary"
-                android:textSize="15sp" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/current_tab"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:accessibilityLiveRegion="polite"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="?android:textColorSecondary"
+                    android:textSize="15sp" />
+
+                <Button
+                    android:id="@+id/play_animation"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_demo_play"
+                    android:minHeight="48dp"
+                    android:paddingHorizontal="14dp"
+                    android:text="@string/play_animation"
+                    android:textAllCaps="false"
+                    android:textColor="?android:textColorPrimary"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
@@ -67,12 +91,6 @@
                 app:glassNavLabel="@string/messages" />
 
             <io.github.bohaofu.glasscapsulenav.GlassNavTab
-                android:id="@+id/tab_add"
-                style="@style/Widget.GlassCapsuleNav.Tab"
-                app:glassNavIcon="add"
-                app:glassNavLabel="@string/add" />
-
-            <io.github.bohaofu.glasscapsulenav.GlassNavTab
                 android:id="@+id/tab_notifications"
                 style="@style/Widget.GlassCapsuleNav.Tab"
                 app:glassNavIcon="notification"
@@ -82,6 +100,7 @@
                 android:id="@+id/tab_profile"
                 style="@style/Widget.GlassCapsuleNav.Tab"
                 app:glassNavIcon="profile"
+                app:glassNavDrawable="@drawable/ic_demo_avatar"
                 app:glassNavLabel="@string/profile" />
         </LinearLayout>
     </io.github.bohaofu.glasscapsulenav.GlassNavBar>

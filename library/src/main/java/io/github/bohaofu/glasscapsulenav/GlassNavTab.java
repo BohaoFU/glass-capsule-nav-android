@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -30,8 +31,10 @@ public final class GlassNavTab extends FrameLayout {
         TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.GlassNavTab);
         labelText = attributes.getText(R.styleable.GlassNavTab_glassNavLabel);
         int icon = attributes.getInt(R.styleable.GlassNavTab_glassNavIcon, 0);
+        Drawable image = attributes.getDrawable(R.styleable.GlassNavTab_glassNavDrawable);
         attributes.recycle();
         glyph = new Glyph(context, icon);
+        glyph.setImageDrawable(image);
         setContentDescription(labelText);
     }
 

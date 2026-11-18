@@ -1,12 +1,12 @@
 package io.github.bohaofu.glasscapsulenav.demo;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.graphics.Insets;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowInsets;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,13 +18,17 @@ public final class DemoActivity extends Activity {
     private static final int[] DESTINATIONS = {
             R.id.tab_home, R.id.tab_messages, R.id.tab_notifications, R.id.tab_profile
     };
+    private static final long PLAYBACK_STEP_MS = 700;
+    private static final int PLAYBACK_IDLE = -1;
 
     private final PalettePanel[] panels = new PalettePanel[3];
+    private final Runnable playbackStep = this::advancePlayback;
     private GlassNavBar bar;
     private LinearLayout content;
     private TextView currentTab;
+    private Button playbackButton;
     private int destination;
-    private int addedPanels;
+    private int playbackStepsRemaining = PLAYBACK_IDLE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,7 @@ public final class DemoActivity extends Activity {
         ViewGroup backdrop = findViewById(R.id.backdrop);
         content = findViewById(R.id.demo_content);
         currentTab = findViewById(R.id.current_tab);
+        playbackButton = findViewById(R.id.play_animation);
         bar = findViewById(R.id.glass_bar);
         bar.setBackdrop(backdrop, null);
         root.setOnApplyWindowInsetsListener((view, insets) -> {
@@ -56,25 +61,54 @@ public final class DemoActivity extends Activity {
         }
         for (int i = 0; i < DESTINATIONS.length; i++) {
             int destinationIndex = i;
-            findViewById(DESTINATIONS[i]).setOnClickListener(view -> showTab(destinationIndex, true));
+            findViewById(DESTINATIONS[i]).setOnClickListener(view -> {
+                stopPlayback();
+                showTab(destinationIndex, true);
+            });
         }
-        findViewById(R.id.tab_add).setOnClickListener(view ->
-                new AlertDialog.Builder(this)
-                        .setMessage(R.string.add_color_panel)
-                        .setNegativeButton(android.R.string.cancel, null)
-                        .setPositiveButton(R.string.add, (dialog, which) -> {
-                            addPanel(destination + panels.length + addedPanels++);
-                            backdrop.post(() -> backdrop.scrollTo(0, content.getHeight()));
-                        })
-                        .show());
+        playbackButton.setOnClickListener(view -> {
+            if (playbackStepsRemaining == PLAYBACK_IDLE) {
+                startPlayback();
+            } else {
+                stopPlayback();
+            }
+        });
 
         showTab(savedInstanceState == null ? 0 : savedInstanceState.getInt("destination"), false);
+    }
+
+    @Override
+    protected void onStop() {
+        stopPlayback();
+        super.onStop();
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("destination", destination);
+    }
+
+    private void startPlayback() {
+        playbackStepsRemaining = DESTINATIONS.length;
+        playbackButton.setText(R.string.stop_animation);
+        playbackButton.postDelayed(playbackStep, 200);
+    }
+
+    private void advancePlayback() {
+        if (playbackStepsRemaining <= 0) {
+            stopPlayback();
+            return;
+        }
+        showTab((destination + 1) % DESTINATIONS.length, true);
+        playbackStepsRemaining--;
+        playbackButton.postDelayed(playbackStep, PLAYBACK_STEP_MS);
+    }
+
+    private void stopPlayback() {
+        playbackButton.removeCallbacks(playbackStep);
+        playbackStepsRemaining = PLAYBACK_IDLE;
+        playbackButton.setText(R.string.play_animation);
     }
 
     private PalettePanel addPanel(int palette) {

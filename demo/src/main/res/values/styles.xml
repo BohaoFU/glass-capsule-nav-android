@@ -1,4 +1,5 @@
 <resources>
+    <color name="demo_play_surface">#E9E7E2</color>
     <style name="Theme.GlassCapsuleDemo" parent="android:style/Theme.Material.Light.NoActionBar">
         <item name="android:colorBackground">#F7F6F3</item>
         <item name="android:windowLightStatusBar">true</item>

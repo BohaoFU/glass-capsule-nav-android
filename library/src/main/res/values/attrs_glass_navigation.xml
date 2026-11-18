@@ -1,6 +1,7 @@
 <resources>
     <declare-styleable name="GlassNavTab">
         <attr name="glassNavLabel" format="string" />
+        <attr name="glassNavDrawable" format="reference" />
         <attr name="glassNavIcon">
             <enum name="home" value="0" />
             <enum name="message" value="1" />
